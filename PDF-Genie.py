@@ -7,17 +7,10 @@ import os
 
 root = Tk()
 root.title('PDF-Genie')
-root.geometry('500x500')
+root.geometry('1000x1500')
 
 my_menu = Menu(root)
 root.config(menu=my_menu)
-
-my_text = Text(root, height=30, width=60)
-my_text.pack(pady=10)
-
-
-def clear_text_box():
-    my_text.delete(1.0, END)
 
 
 def open_pdf():
@@ -32,7 +25,9 @@ def open_pdf():
         # page_stuff = page.extractText()
         # my_text.insert(1.0,page_stuff)
         v1 = pdf.ShowPdf()
-        v2 = v1.pdf_view(root, pdf_location=open())
+        v2 = v1.pdf_view(root, pdf_location=open(
+            open_file, 'r'), width=85, height=100)
+        v2.pack(pady=(0, 0))
 
 
 def save_pdf():
@@ -44,7 +39,6 @@ template_menu = Menu(my_menu, tearoff=False)
 my_menu.add_cascade(label="File", menu=file_menu)
 file_menu.add_command(label='Create Template', command=open_pdf)
 file_menu.add_command(label='Save Template', command=save_pdf)
-file_menu.add_command(label='Clear', command=clear_text_box)
 file_menu.add_separator()
 file_menu.add_command(label='Exit', command=root.quit)
 my_menu.add_cascade(label="Templates", menu=template_menu)
