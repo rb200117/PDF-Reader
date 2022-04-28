@@ -3,6 +3,7 @@ from tkinter import *
 import PyPDF2
 from tkinter import filedialog
 from tkPDFViewer import tkPDFViewer as pdf
+from pdf2image import convert_from_path
 import os
 
 root = Tk()
@@ -26,7 +27,7 @@ def open_pdf():
         # my_text.insert(1.0,page_stuff)
         v1 = pdf.ShowPdf()
         v2 = v1.pdf_view(root, pdf_location=open(
-            open_file, 'r'), width=85, height=100)
+            open_file, 'r'), width=85, height=90)
         v2.pack(pady=(0, 0))
 
 
